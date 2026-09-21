@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<html lang="zh-CN"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
 <title>箭了又箭</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:100%;height:100%;background:#0b0e18;overflow:hidden;font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;touch-action:none;user-select:none;-webkit-user-select:none}
+html,body{width:100%;height:100%;background:#0b0e18;overflow:hidden;font-family:"PingFang SC","Microsoft YaHei",sans-serif;touch-action:none;user-select:none}
 #wrap{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
 canvas{display:block;max-width:100%;max-height:100%;background:#121624;box-shadow:0 12px 48px rgba(0,0,0,.55);border-radius:12px}
-</style>
-</head>
-<body>
+</style></head><body>
 <div id="wrap"><canvas id="game" width="720" height="1280"></canvas></div>
-<script src="game.js"></script>
-</body>
-</html>
+<script>
+(async()=>{
+  const parts=await Promise.all(["game.part1.b64.txt","game.part2.b64.txt"].map(u=>fetch(u).then(r=>r.text())));
+  const bin=Uint8Array.from(atob(parts.join("")),c=>c.charCodeAt(0));
+  const text=await new Response(new Blob([bin]).stream().pipeThrough(new DecompressionStream("gzip"))).text();
+  (0,eval)(text);
+})().catch(e=>{document.body.innerHTML="<pre style=color:#fff;padding:24px>"+e+"</pre>";});
+</script></body></html>
