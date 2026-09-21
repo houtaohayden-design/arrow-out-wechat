@@ -1,0 +1,12 @@
+{
+  "__version__": "1.0.10",
+  "modules": {
+    "graphics": {"_value": true},
+    "gfx-webgl": {"_value": true},
+    "gfx-webgl2": {"_value": true},
+    "ui": {"_value": true},
+    "particle": {"_value": true},
+    "tween": {"_value": true},
+    "audio": {"_value": true}
+  }
+}
