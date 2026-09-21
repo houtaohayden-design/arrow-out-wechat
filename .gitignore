@@ -1,0 +1,19 @@
+# Cocos Creator
+library/
+temp/
+local/
+build/
+native/
+settings/v2/packages/builder.json
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.log
+node_modules/
+
+# Profiles (machine-local)
+profiles/
